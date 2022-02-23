@@ -1,6 +1,6 @@
 public class Book {
     public static class Autor {
-        String name, sex, email;
+        public String name, sex, email;
     }
 
     private String title;
