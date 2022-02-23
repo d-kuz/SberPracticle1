@@ -1,5 +1,3 @@
-package Lessons2.src;
-
 public class Book {
     public static class Autor {
         String name, sex, email;
@@ -35,11 +33,11 @@ public class Book {
     }
 
     public String toString(){
-        return "Title " + title +
-                "Autor" + autor.name +
-                "Sex" + autor.sex +
-                "E-mail" + autor.email +
-                "Year" + year;
+        return "Title: " + title +
+                "\nAutor: " + autor.name +
+                "\nSex: " + autor.sex +
+                "\nE-mail: " + autor.email +
+                "\nYear: " + year;
     }
 
 }

@@ -1,5 +1,3 @@
-package Lessons2.src;
-
 public class Circle {
     public String color;
     public double radius;
@@ -18,6 +16,6 @@ public class Circle {
         return P;
     }
     public String toString(){
-        return radius + ", " + color + ", " + area() + ", " + perimeter();
+        return "R: " + radius + ", " + color + ", S:" + area() + ", P:" + perimeter();
     }
 }

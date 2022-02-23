@@ -1,5 +1,3 @@
-package Lessons2.src;
-
 public class Matrix {
     public int row = 2;
     public int columns = 2;
@@ -55,14 +53,13 @@ public class Matrix {
         }
     }
     public void MulMatrix(Matrix m1, Matrix m2){
-        int i = 0;
-        int t = 0;
         Matrix result = new Matrix(m1.columns, m1.row);
         System.out.println("Произведение матриц: ");
+        int i = 0;
         while (i < row) {
             for (int j = 0; j < columns; j++) {
                 result.a[i][j] = 0;
-                t = 0;
+                int t = 0;
                 while (t < row){
                     result.a[i][j] = result.a[i][j] + m1.a[i][t]*m2.a[t][j];
                     t = t + 1;
