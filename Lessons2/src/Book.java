@@ -1,7 +1,7 @@
 package Lessons2.src;
 
 public class Book {
-    public class Autor {
+    public static class Autor {
         String name, sex, email;
     }
 
@@ -37,6 +37,8 @@ public class Book {
     public String toString(){
         return "Title " + title +
                 "Autor" + autor.name +
+                "Sex" + autor.sex +
+                "E-mail" + autor.email +
                 "Year" + year;
     }
 
