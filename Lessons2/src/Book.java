@@ -1,6 +1,13 @@
 public class Book {
     public static class Autor {
-        public String name, sex, email;
+        public String name;
+        public String sex;
+        public String email;
+        public  Autor(String name, String sex, String email) {
+            this.name= name;
+            this.sex = sex;
+            this.email = email;
+        }
     }
 
     private String title;
