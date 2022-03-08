@@ -1,27 +1,26 @@
-class Rectangle extends Figure implements Drawable{
-    Point p1, p2, p3,p4;
-    Rectangle (Point p1, Point p2, Point p3, Point p4){
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
+class Rectangle extends Figure{
+    private int w,h;
+    public Rectangle (Point point, int w, int h){
+        super(point);
+        this.w = w;
+        this.h = h;
     }
 
     @Override
-    public double area(Figure figure) {
-        return super.area(figure);
+    public double area() {
+        return w*h;
     }
 
     @Override
-    public double perimeter(Figure figure) {
-        return super.perimeter(figure);
+    public double perimeter() {
+        return 2*(w + h);
     }
 
     public void draw() {
-
+        draw(Color.Black);
     }
 
     public void draw(Color color) {
-
+        System.out.printf("Прямоугольник с координатами %s, высотой %s, шириной %s и цветом %s \n", point, h, w, color);
     }
 }

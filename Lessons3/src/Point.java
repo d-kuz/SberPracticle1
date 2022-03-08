@@ -4,4 +4,12 @@ public class Point {
         x = X;
         y = Y;
     }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

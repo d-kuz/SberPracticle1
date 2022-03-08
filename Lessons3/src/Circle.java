@@ -1,27 +1,25 @@
-import java.awt.*;
-
-class Circle extends Figure implements Drawable{
-    Point p1, p2;
-    Circle (Point p1, Point p2){
-        this.p1 = p1;
-        this.p2 = p2;
+class Circle extends Figure{
+    private int radius;
+    Circle (Point point, int radius){
+        super(point);
+        this.radius = radius;
     }
 
     @Override
-    public double area(Figure figure) {
-        return super.area(figure);
+    public double area() {
+        return radius*radius*Math.PI;
     }
 
     @Override
-    public double perimeter(Figure figure) {
-        return super.perimeter(figure);
+    public double perimeter() {
+        return 2*radius*Math.PI;
     }
 
     public void draw() {
-
+        draw(Color.Black);
     }
 
     public void draw(Color color) {
-
+        System.out.printf("Круг с координатами %s, радиусом %s и цветом %s \n", point, radius, color);
     }
 }

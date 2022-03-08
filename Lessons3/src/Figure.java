@@ -1,15 +1,12 @@
 import java.awt.Graphics2D;
 
-public abstract class Figure{
-    public Point point;
-    public static double S;
-    public static double P;
+public abstract class Figure implements Drawable{
+    protected Point point;
+    public Figure(Point point) {
+        this.point = point;
+    }
 
-    public double area(Figure figure) {
-        return S;
-    }
-    public double perimeter(Figure figure) {
-        return P;
-    }
+    public abstract double area();
+    public abstract double perimeter();
 }
 
