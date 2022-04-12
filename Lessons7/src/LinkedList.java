@@ -72,7 +72,19 @@ public class LinkedList implements List, Deque {
 
     @Override
     public void add(int index, Object item) {
-
+        Node node = first;
+        Node newNode = new Node();
+        newNode.item = item;
+        int i=0;
+        while (node != null){
+            if (i==index){
+                node.next = newNode;
+                node.prev = last;
+                size++;
+            }
+            i++;
+            node = node.next;
+        }
     }
 
     @Override
@@ -107,42 +119,78 @@ public class LinkedList implements List, Deque {
 
     @Override
     public void addFirst(Object item) {
-
+        Node node = new Node();
+        node.item = first.item;
+        Object d;
+        d = item;
+        node.next = first.next;
+        node.prev = first;
+        first.next.prev = node;
+        first.next = node;
+        first.item = d;
     }
 
     @Override
     public void addLast(Object item) {
-
+        Node node = new Node();
+        node.item = last.item;
+        Object d;
+        d = item;
+        node.next = last;
+        node.prev = last.prev;
+        last.prev.next = node;
+        last.prev = node;
+        first.item = d;
     }
 
     @Override
     public Object getFirst() throws NoSuchElementException{
-        return null;
+        return first.item;
     }
 
     @Override
     public Object getLast() throws NoSuchElementException{
-        return null;
+        return last.item;
     }
 
     @Override
     public Object pollFirst() {
-        return null;
+        if (first == null){
+            return null;
+        }else {
+            Object n = first.item;
+            first.next.prev = null;
+            first = first.next;
+            return n;
+        }
     }
 
     @Override
     public Object pollLast() {
-        return null;
+        if (first == null){
+            return null;
+        }else {
+            Object n = last.item;
+            last.prev.next = null;
+            last = last.prev;
+            return n;
+        }
     }
 
     @Override
     public Object removeFirst() throws NoSuchElementException{
-        return null;
+        Object n = first.item;
+        first.next.prev = null;
+        first = first.next;
+        return n;
     }
 
     @Override
     public Object removeLast() throws NoSuchElementException {
-        return null;
+        Object n = last.item;
+        last.prev.next = null;
+        last = last.prev;
+        return n;
     }
 
 
