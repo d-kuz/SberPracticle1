@@ -89,27 +89,63 @@ public class LinkedList implements List, Deque {
 
     @Override
     public void set(int index, Object item) {
+        Node node = first;
+        int i=0;
+        if (index == size){
+            addLast(item);
+        }else{
+            while(i<index){
+                i++;
+                node = node.next;
+            }
+            node.item = item;
+        }
 
     }
 
     @Override
     public Object get(int index) throws IndexOutOfBoundsException {
-        return null;
+        Node node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node.item;
     }
 
     @Override
     public int indexOf(Object item) {
-        return 0;
+        Node node = first;
+        int i=0;
+        while((i<size) & (node.item != item)){
+            i++;
+            node = node.next;
+        }
+        return size-i;
     }
 
     @Override
     public int lastIndexOf(Object item) {
-        return 0;
+        Node node = last;
+        int i=size-1;
+        while((i>0) & (node.item != item)){
+            i--;
+            node = node.next;
+        }
+        return i;
     }
 
     @Override
     public Object remove(int index) throws IndexOutOfBoundsException{
-        return null;
+        Node node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        Object d = node.item;
+        Node next = node.next;
+        node.next = next.next;
+        next.next.prev = next.prev;
+        next = null;
+        return d;
     }
 
     @Override
