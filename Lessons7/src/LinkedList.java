@@ -51,16 +51,14 @@ public class LinkedList implements List, Deque {
             first = null;
             return true;
         }
-        Node next = node.next;
-        while (next != null){
+        while (node != null){
             if(node.item.equals(item)){
-                node.next = next.next;
-                next.next.prev = next.prev;
-                next = null;
+                node.prev.next = node.next.next;
+                node.next.prev = node.prev.prev;
+                node = null;
                 return true;
             }
-            node = next;
-            next = next.next;
+            node = node.next;
         }
         return false;
     }
@@ -141,16 +139,23 @@ public class LinkedList implements List, Deque {
             node = node.next;
         }
         Object d = node.item;
-        Node next = node.next;
-        node.next = next.next;
-        next.next.prev = next.prev;
-        next = null;
+        node.prev.next = node.next.next;
+        node.next.prev = node.prev.prev;
+        node = null;
         return d;
     }
 
     @Override
     public Object[] subList(int from, int to) throws IndexOutOfBoundsException{
-        return null;
+        Node node = first;
+        for (int i = 0; i < from; i++) {
+            node = node.next;
+        }
+        Object[] arr = new Object[to-from];
+        for (int i = from; i < to; i++) {
+            arr[i-from] = node.item;
+        }
+        return arr;
     }
 
     @Override
