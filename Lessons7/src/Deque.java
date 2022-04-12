@@ -1,51 +1,18 @@
-import java.util.Collection;
+public interface Deque extends Collection{
 
-public interface Deque extends Collection {
+    void addFirst(Object item);
 
-    default void addFirst(Object item){
+    void addLast(Object item);
 
-    }
-    //Добавление элемента в начало коллекции.
+    Object getFirst();
 
-    default void addLast(Object item){
+    Object getLast();
 
-    }
-    //Добавление элемента в конец коллекции.
+    Object pollFirst();
 
-    default Object getFirst(){
+    Object pollLast();
 
-    }
-    //Получение первого элемента коллекции. Элемент из коллекции не удаляется.
-    //В случае отсутствия элементов в коллекции генерируется исключение NoSuchElementException.
+    Object removeFirst();
 
-    default Object getLast(){
-
-    }
-    //Получение последнего элемента коллекции. Элемент из коллекции не удаляется.
-    //В случае отсутствия элементов в коллекции генерируется исключение NoSuchElementException.
-
-    default Object pollFirst(){
-
-    }
-    //Получение первого элемента коллекции. Элемент из коллекции удаляется.
-    //В случае отсутствия элементов в коллекции возвращается null.
-
-    default Object pollLast(){
-
-    }
-    //Получение последнего элемента коллекции. Элемент из коллекции удаляется.
-    //В случае отсутствия элементов в коллекции возвращается null.
-
-    default Object removeFirst(){
-
-    }
-    //Удаление первого элемента коллекции. Возвращается удаленный элемент.
-    //В случае отсутствия элементов в коллекции генерируется исключение NoSuchElementException.
-
-    default Object removeLast(){
-
-    }
-    //Удаление последнего элемента коллекции. Возвращается удаленный элемент.
-    //В случае отсутствия элементов в коллекции генерируется исключение NoSuchElementException.
-
+    Object removeLast();
 }

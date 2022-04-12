@@ -1,10 +1,8 @@
-import java.util.Collection;
-import java.util.Iterator;
-
 public class ArrayList implements List{
-    private Object[] arr;
-    private int size;
-    private int capacity;
+    int size;
+    int capacity = 10;
+    Object[] arr = new Object[size];
+
 
     @Override
     public int size() {
@@ -13,11 +11,7 @@ public class ArrayList implements List{
 
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }else {
-            return false;
-        }
+        return size == 0;
     }
 
     @Override
@@ -34,62 +28,127 @@ public class ArrayList implements List{
     }
 
     @Override
-    public Iterator iterator() {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
     public boolean add(Object item) {
-        if (size >= capacity) {
-            capacity = (capacity * 3) / 2 + 1;
-            Object[] newCollection = new Object[capacity];
-            for (int i = 0; i < arr.length; i++) {
-                newCollection[i] = arr[i];
+        if (size >= capacity){
+            capacity = (capacity*3)/2 + 1;
+
+            Object[] newArr = new Object[capacity];
+
+            for(int i = 0; i < arr.length; i++){
+                newArr[i] = arr[i];
             }
-            arr = newCollection;
+            arr = newArr;
         }
         arr[size] = item;
         size++;
-        return true;
-    }
-
-    @Override
-    public boolean remove(Object o) {
         return false;
     }
 
     @Override
-    public boolean addAll(Collection c) {
-        return false;
+    public boolean remove(Object item) {
+        boolean isDelete = false;
+        int i=0;
+        while ((!isDelete) & (i < size)){
+            if (arr[i] == item) {
+                arr[i] = null;
+                isDelete = true;
+            }
+        }
+        return isDelete;
     }
 
     @Override
     public void clear() {
-
+        for (int i = 0; i < size; i++) {
+            arr[i] = null;
+        }
     }
 
     @Override
-    public boolean retainAll(Collection c) {
-        return false;
+    public void add(int index, Object item) {
+        if (size >= capacity){
+            capacity = (capacity*3)/2 + 1;
+
+            Object[] newArr = new Object[capacity];
+
+            for(int i = 0; i < arr.length; i++){
+                newArr[i] = arr[i];
+            }
+            arr = newArr;
+        }
+        arr[index] = item;
+        size++;
+        Object y;
+        for(int i = index + 1; i < size - 1; i++){
+            y = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = y;
+        }
     }
 
     @Override
-    public boolean removeAll(Collection c) {
-        return false;
+    public void set(int index, Object item) {
+        if (index == size){
+            add(item);
+        } else {
+            arr[index] = item;
+        }
     }
 
     @Override
-    public boolean containsAll(Collection c) {
-        return false;
+    public Object get(int index) throws IndexOutOfBoundsException{
+        if ((!isEmpty()) & (arr[index] != null)){
+            return arr[index];
+        }
+        return null;
     }
 
     @Override
-    public Object[] toArray(Object[] a) {
-        return new Object[0];
+    public int indexOf(Object item) {
+        int j = -1;
+        boolean isFirst = false;
+        for (int i = 0; i < size; i++){
+            if ((arr[i] == item) & (!isFirst)){
+                j = i;
+                isFirst = true;
+            }
+        }
+        return j;
+    }
+
+    @Override
+    public int lastIndexOf(Object item) {
+        int j = -1;
+        for (int i = 0; i < size; i++){
+            if (arr[i] == item){
+                j = i;
+            }
+        }
+        return j;
+    }
+
+    @Override
+    public Object remove(int index) throws IndexOutOfBoundsException{
+        Object copyA;
+        if (arr[index] != null){
+            copyA = arr[index];
+            arr[index] = null;
+            return copyA;
+        }
+        return null;
+    }
+
+    @Override
+    public Object[] subList(int from, int to) throws IndexOutOfBoundsException{
+        if (size <= capacity){
+            Object[] newArr = new Object[to-from];
+
+            for(int i = from; i < to; i++){
+                newArr[i] = arr[i];
+            }
+            return newArr;
+        }
+        return null;
     }
 }
+
